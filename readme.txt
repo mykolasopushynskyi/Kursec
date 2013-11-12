@@ -1,2 +1,3 @@
 My course work!
-Teacher - Salo.
+
+Client/Server application to handle transactions.
