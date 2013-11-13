@@ -14,9 +14,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         client.cpp \
-    transbuilder.cpp
+    transbuilder.cpp \
+    logger.cpp \
+    serverconnector.cpp
 
 HEADERS  += client.h \
-    transbuilder.h
+    transbuilder.h \
+    logger.h \
+    serverconnector.h
 
 FORMS    += client.ui

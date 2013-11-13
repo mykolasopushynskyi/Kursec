@@ -6,7 +6,9 @@
 #include <QTcpSocket>
 #include <QHostAddress>
 
+#include "logger.h"
 #include "transbuilder.h"
+#include "serverconnector.h"
 
 namespace Ui {
 class Client;
@@ -20,22 +22,28 @@ public:
     explicit Client(QWidget *parent = 0);
     ~Client();
 
-    void log(QString msg);
+    void sendData(QByteArray msg);
 
 private slots:
+    /*
     //определим слоты для обработки сигналов сокета
         void onSokConnected();
         void onSokDisconnected();
     //сигнал readyRead вызывается, когда сокет получает пакет (который может быть лишь частью отправленых данных) байтов
         void onSokReadyRead();
         void onSokDisplayError(QAbstractSocket::SocketError socketError);
-        
+        */
         void on_pushButton_3_clicked();
+        void on_pushButton_4_clicked();
+        void on_pushButton_5_clicked();
+
+        void on_pushButton_6_clicked();
 
 private:
     TransBuilder* transBuilder;
+    ServerConnector* connector;
     Ui::Client *ui;
-    QTcpSocket *_sok; //сокет
+    Logger* textLog;
     quint16 _blockSize;
 };
 

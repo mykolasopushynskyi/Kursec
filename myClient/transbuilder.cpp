@@ -1,44 +1,125 @@
 #include "transbuilder.h"
 
-TransBuilder::TransBuilder(QObject *parent) :
+TransBuilder::TransBuilder(Logger* l, QObject *parent) :
     QObject(parent)
 {
-   // writer = new QXmlStreamWriter();
+    logger = l;
 }
 
 QByteArray TransBuilder::checkMoney(QString pin, QString id)
 {
     QByteArray* result = new QByteArray();
 
+    if(pin != "" &&  id != ""){
+        QXmlStreamWriter writer(result);
+        writer.setAutoFormatting(true);
+        writer.writeStartDocument();
+        writer.writeStartElement("checkMoney");
+            writer.writeStartElement("id");
+                writer.writeCharacters(id);
+            writer.writeEndElement();
 
-    QXmlStreamWriter writer(result);
-    writer.setAutoFormatting(true);
-    writer.writeStartDocument();
-    writer.writeStartElement("checkMoney");
-        writer.writeStartElement("id");
-            writer.writeCharacters(id);
+            writer.writeStartElement("pin");
+                writer.writeCharacters(pin);
+            writer.writeEndElement();
         writer.writeEndElement();
-
-        writer.writeStartElement("pin");
-            writer.writeCharacters(pin);
-        writer.writeEndElement();
-    writer.writeEndElement();
-    writer.writeEndDocument();
-
+        writer.writeEndDocument();
+    }
+    else
+    {
+        logger->log("Я: Не всі поля заповнені");
+    }
     return *result;
 }
 
-QString TransBuilder::getMoney()
+QByteArray TransBuilder::getMoney(QString pin, QString id, QString val)
 {
-    return "";
+    QByteArray* result = new QByteArray();
+    if(pin != "" &&  id != "" && val != ""){
+        QXmlStreamWriter writer(result);
+        writer.setAutoFormatting(true);
+        writer.writeStartDocument();
+        writer.writeStartElement("getMoney");
+            writer.writeStartElement("id");
+                writer.writeCharacters(id);
+            writer.writeEndElement();
+
+            writer.writeStartElement("pin");
+                writer.writeCharacters(pin);
+            writer.writeEndElement();
+
+            writer.writeStartElement("val");
+                writer.writeCharacters(val);
+            writer.writeEndElement();
+        writer.writeEndElement();
+        writer.writeEndDocument();
+    }
+    else
+    {
+        logger->log("Я: Не всі поля заповнені");
+    }
+    return *result;
 }
 
-QString TransBuilder::putMoney()
+QByteArray TransBuilder::putMoney(QString pin, QString id, QString val)
 {
-    return "";
+    QByteArray* result = new QByteArray();
+    if(pin != "" &&  id != "" && val != ""){
+        QXmlStreamWriter writer(result);
+        writer.setAutoFormatting(true);
+        writer.writeStartDocument();
+        writer.writeStartElement("putMoney");
+            writer.writeStartElement("id");
+                writer.writeCharacters(id);
+            writer.writeEndElement();
+
+            writer.writeStartElement("pin");
+                writer.writeCharacters(pin);
+            writer.writeEndElement();
+
+            writer.writeStartElement("val");
+                writer.writeCharacters(val);
+            writer.writeEndElement();
+        writer.writeEndElement();
+        writer.writeEndDocument();
+    }
+    else
+    {
+        logger->log("Я: Не всі поля заповнені");
+    }
+    return *result;
 }
 
-QString TransBuilder::payMoney()
+QByteArray TransBuilder::payMoney(QString pin, QString id, QString val, QString id2)
 {
-    return "";
+    QByteArray* result = new QByteArray();
+    if(pin != "" &&  id != "" && val != "" && id2 != ""){
+        QXmlStreamWriter writer(result);
+        writer.setAutoFormatting(true);
+        writer.writeStartDocument();
+        writer.writeStartElement("putMoney");
+            writer.writeStartElement("id");
+                writer.writeCharacters(id);
+            writer.writeEndElement();
+
+            writer.writeStartElement("pin");
+                writer.writeCharacters(pin);
+            writer.writeEndElement();
+
+            writer.writeStartElement("val");
+                writer.writeCharacters(val);
+            writer.writeEndElement();
+
+            writer.writeStartElement("id2");
+                writer.writeCharacters(id2);
+            writer.writeEndElement();
+
+        writer.writeEndElement();
+        writer.writeEndDocument();
+    }
+    else
+    {
+        logger->log("Я: Не всі поля заповнені");
+    }
+    return *result;
 }
