@@ -13,8 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        client.cpp
+        client.cpp \
+    transbuilder.cpp
 
-HEADERS  += client.h
+HEADERS  += client.h \
+    transbuilder.h
 
 FORMS    += client.ui

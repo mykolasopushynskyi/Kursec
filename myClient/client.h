@@ -6,6 +6,8 @@
 #include <QTcpSocket>
 #include <QHostAddress>
 
+#include "transbuilder.h"
+
 namespace Ui {
 class Client;
 }
@@ -18,6 +20,8 @@ public:
     explicit Client(QWidget *parent = 0);
     ~Client();
 
+    void log(QString msg);
+
 private slots:
     //определим слоты для обработки сигналов сокета
         void onSokConnected();
@@ -29,6 +33,7 @@ private slots:
         void on_pushButton_3_clicked();
 
 private:
+    TransBuilder* transBuilder;
     Ui::Client *ui;
     QTcpSocket *_sok; //сокет
     quint16 _blockSize;
