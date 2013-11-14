@@ -1,0 +1,12 @@
+#include "logger.h"
+
+Logger::Logger(QObject *parent) :
+    QObject(parent)
+{
+
+}
+
+void Logger::log(QString msg)
+{
+
+}
