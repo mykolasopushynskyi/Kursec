@@ -97,7 +97,7 @@ QByteArray TransBuilder::payMoney(QString pin, QString id, QString val, QString 
         QXmlStreamWriter writer(result);
         writer.setAutoFormatting(true);
         writer.writeStartDocument();
-        writer.writeStartElement("putMoney");
+        writer.writeStartElement("payMoney");
             writer.writeStartElement("id");
                 writer.writeCharacters(id);
             writer.writeEndElement();

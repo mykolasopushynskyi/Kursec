@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QThread>
+#include <QNetworkInterface>
 #include "myserver.h"
 #include "logger.h"
 

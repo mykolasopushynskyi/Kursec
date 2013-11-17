@@ -15,10 +15,24 @@ TEMPLATE = app
 SOURCES += main.cpp \
         server.cpp \
         myserver.cpp \
-        logger.cpp
+        logger.cpp \
+        thandler.cpp \
+    checkhandler.cpp \
+    errorhandler.cpp \
+    transactionmanager.cpp \
+    gethandler.cpp \
+    puthandler.cpp \
+    payhandler.cpp
 
 HEADERS  += server.h \
             myserver.h \
-            logger.h
+            logger.h \
+            thandler.h \
+    checkhandler.h \
+    errorhandler.h \
+    transactionmanager.h \
+    gethandler.h \
+    puthandler.h \
+    payhandler.h
 
 FORMS    += server.ui

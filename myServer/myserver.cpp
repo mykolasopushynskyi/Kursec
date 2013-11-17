@@ -3,6 +3,7 @@
 MyServer::MyServer(QString prt, QObject *parent) :
     QObject(parent)
 {
+    tManager = new TransactionManager();
     server = new QTcpServer(this);
     connect(server, SIGNAL(newConnection()), this, SLOT(newConnection()));
 
@@ -36,11 +37,23 @@ void MyServer::newConnection()
         QByteArray data = socket->readAll();
 
         //Обробити транзакцію
-        emit log("new:" + data);
+        //Qstring t = data.
+
+        QString responce = tManager->handleTransaction(data);
+
+        emit log("Транзакція:");
+        emit log(data);
+        emit log("Відповідь:");
+        emit log(responce);
     }
     else
     {
-          //logger->log("Cant read data");
+         //logger->log("Cant read data");
     }
     socket->close();
+}
+
+QHostAddress* MyServer::getAddress()
+{
+   return addr;
 }

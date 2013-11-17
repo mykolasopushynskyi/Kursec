@@ -5,6 +5,10 @@
 #include "thandler.h"
 #include "checkhandler.h"
 #include "errorhandler.h"
+#include "gethandler.h"
+#include "puthandler.h"
+#include "payhandler.h"
+
 //TODO include handles here
 
 class TransactionManager : public QObject
