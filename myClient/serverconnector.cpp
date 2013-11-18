@@ -15,7 +15,6 @@ void ServerConnector::readResponce(){
     QByteArray responce;
     responce = _sok->readAll();
     emit log("Сервер:" + responce);
-    //textLog->log("Сервер:" + responce);
     _sok->close();
     return;
 }
