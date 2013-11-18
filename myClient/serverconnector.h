@@ -12,7 +12,10 @@ public:
     explicit ServerConnector(Logger *l, QObject *parent = 0);
     void sendData(QHostAddress* a, qint16 port, QByteArray data);
 signals:
-public slots:
+    void log(const QString text);
+private slots:
+    void readResponce();
+    void displayError(QAbstractSocket::SocketError socketError);
 private:
     QTcpSocket *_sok; //сокет
     Logger *textLog;

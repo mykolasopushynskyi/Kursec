@@ -33,16 +33,16 @@ void MyServer::newConnection()
     }
 
     QTcpSocket * socket = server->nextPendingConnection();
-    if(socket->waitForReadyRead(3000)){
+    if(socket->waitForReadyRead(/*3000*/)){
         QByteArray data = socket->readAll();
+        QString responce = tManager->handleTransaction(data) + "\n";
+        socket->waitForBytesWritten();
+        socket->write(responce.toStdString().c_str());
+        socket->flush();
 
-        //Обробити транзакцію
-        //Qstring t = data.
 
-        QString responce = tManager->handleTransaction(data);
-
-        emit log("Транзакція:");
-        emit log(data);
+        // emit log("Транзакція:");
+       // emit log(data);
         emit log("Відповідь:");
         emit log(responce);
     }
@@ -50,6 +50,7 @@ void MyServer::newConnection()
     {
          //logger->log("Cant read data");
     }
+    socket->waitForBytesWritten(/*1000*/);
     socket->close();
 }
 

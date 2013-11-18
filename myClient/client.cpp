@@ -11,30 +11,14 @@ Client::Client(QWidget *parent) :
 
     transBuilder = new TransBuilder(textLog);
     connector = new ServerConnector(textLog);
+    connect(connector, SIGNAL(log(const QString)), this, SLOT(log(const QString)));
 
-    //підключення сигналів
-    //connect(_sok, SIGNAL(readyRead()), this, SLOT(onSokReadyRead()));
-   // connect(_sok, SIGNAL(connected()), this, SLOT(onSokConnected()));
-   // connect(_sok, SIGNAL(disconnected()), this, SLOT(onSokDisconnected()));
-   // connect(_sok, SIGNAL(error(QAbstractSocket::SocketError)),this, SLOT(onSokDisplayError(QAbstractSocket::SocketError)));
 }
 
 Client::~Client()
 {
     delete ui;
 }
-/*
-void Client::onSokDisplayError(QAbstractSocket::SocketError socketError)
-{}
-
-void Client::onSokDisconnected()
-{}
-
-void Client::onSokConnected()
-{}
-
-void Client::onSokReadyRead()
-{}*/
 
 //Запит перевірки стану рахунку
 void Client::on_pushButton_3_clicked()
@@ -86,21 +70,10 @@ void Client::sendData(QByteArray msg)
     connector->sendData(new QHostAddress(ui->addr->text()),
                         ui->port->text().toUInt(),
                         msg);
-    /*
+}
 
-    QHostAddress* a = new QHostAddress(ui->addr->text());
-
-
-    _sok->connectToHost(*a ,ui->port->text().toUInt());
-
-    if( _sok->waitForConnected(100)){
-        _sok->write(msg);
-        _sok->flush();
-        _sok->waitForBytesWritten(1000);
-        _sok->close();
-    }
-    else
-    {
-        textLog->log("Я: Не можу під'єднатись!");
-    }*/
+//послати дані на сервер
+void Client::log(QString msg)
+{
+    ui->message->append(msg);
 }
