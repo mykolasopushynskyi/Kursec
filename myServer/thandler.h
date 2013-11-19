@@ -2,7 +2,7 @@
 #define THANDLER_H
 
 #include <QObject>
-
+#include "accountmanager.h"
 
 //Transaction handler
 class THandler : public QObject
@@ -11,13 +11,16 @@ class THandler : public QObject
     THandler *next;
 
 public:
-    explicit THandler(QObject *parent = 0);
+    explicit THandler(AccountManager* accountManager, QObject *parent = 0);
     void setNext(THandler *n);
     void add(THandler *n);
     virtual QString handle(QByteArray t);
 signals:
 
 public slots:
+
+protected:
+    AccountManager* accountManager;
 
 };
 

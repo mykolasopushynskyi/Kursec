@@ -22,7 +22,10 @@ SOURCES += main.cpp \
     transactionmanager.cpp \
     gethandler.cpp \
     puthandler.cpp \
-    payhandler.cpp
+    payhandler.cpp \
+    account.cpp \
+    user.cpp \
+    accountmanager.cpp
 
 HEADERS  += server.h \
             myserver.h \
@@ -33,6 +36,9 @@ HEADERS  += server.h \
     transactionmanager.h \
     gethandler.h \
     puthandler.h \
-    payhandler.h
+    payhandler.h \
+    account.h \
+    user.h \
+    accountmanager.h
 
 FORMS    += server.ui

@@ -9,7 +9,7 @@
 class PayHandler : public THandler
 {
 public:
-    PayHandler();
+    PayHandler(AccountManager* accountManager);
     QString handle(QByteArray t);
 };
 

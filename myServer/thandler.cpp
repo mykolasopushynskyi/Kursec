@@ -1,8 +1,9 @@
 #include "thandler.h"
 
-THandler::THandler(QObject *parent) :
+THandler::THandler(AccountManager* accountManager, QObject *parent) :
     QObject(parent)
 {
+    this->accountManager =  accountManager;
     next = 0;
 }
 

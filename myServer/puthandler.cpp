@@ -1,8 +1,7 @@
 #include "puthandler.h"
 
-PutHandler::PutHandler()
-{
-}
+PutHandler::PutHandler(AccountManager* accountManager):THandler(accountManager)
+{}
 /*
 <?xml version="1.0" encoding="UTF-8"?>
 <getMoney>
@@ -79,7 +78,5 @@ QString PutHandler::handle(QByteArray t)
         return "Неправильна кількість грошей";
     }
 
-    //TODO Додати звертання до БД з разунками
-
-    return "Поповнення рахунку пін " + pin + " id " + id + " val " + val;
+    return accountManager->getMoney(id,pin,val);
 }

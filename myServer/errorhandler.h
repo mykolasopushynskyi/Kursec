@@ -6,7 +6,7 @@
 class ErrorHandler : public THandler
 {
 public:
-    ErrorHandler();
+    ErrorHandler(AccountManager* accountManager);
     QString handle(QByteArray t);
 };
 

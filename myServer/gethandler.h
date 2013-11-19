@@ -9,7 +9,7 @@
 class GetHandler : public THandler
 {
 public:
-    GetHandler();
+    GetHandler(AccountManager* accountManager);
     QString handle(QByteArray t);
 };
 

@@ -1,6 +1,6 @@
 #include "errorhandler.h"
 
-ErrorHandler::ErrorHandler()
+ErrorHandler::ErrorHandler(AccountManager* accountManager):THandler(accountManager)
 {
 }
 

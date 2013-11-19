@@ -1,6 +1,6 @@
 #include "checkhandler.h"
 
-CheckHandler::CheckHandler()
+CheckHandler::CheckHandler(AccountManager* accountManager):THandler(accountManager)
 {
 }
 
@@ -65,7 +65,6 @@ QString CheckHandler::handle(QByteArray t)
         return "Помилка запису id рахунку";
     }
 
-    //TODO Додати звертання до БД з разунками
-
-    return "Перевірка стану рахунку пін " + pin + " id " + id;
+   return accountManager->checkMoney(id,pin);
+    //return "Перевірка стану рахунку пін " + pin + " id " + id;
 }

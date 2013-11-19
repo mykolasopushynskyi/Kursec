@@ -8,6 +8,8 @@
 #include "gethandler.h"
 #include "puthandler.h"
 #include "payhandler.h"
+#include "accountmanager.h"
+
 
 //TODO include handles here
 
@@ -23,6 +25,7 @@ public slots:
 
 private:
     CheckHandler* root;
+    AccountManager* accountManager;
 };
 
 #endif // TRANSACTIONMANAGER_H

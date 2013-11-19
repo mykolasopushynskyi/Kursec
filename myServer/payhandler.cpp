@@ -9,7 +9,7 @@
     <id2>12345</id2>
 </putMoney>
 */
-PayHandler::PayHandler()
+PayHandler::PayHandler(AccountManager* accountManager):THandler(accountManager)
 {
 }
 
@@ -92,6 +92,6 @@ QString PayHandler::handle(QByteArray t)
 
     //TODO Додати звертання до БД з разунками
 
-    return "Переведення грошей пін " + pin + " id " + id + " val " + val + " id2 " + id2;
+    return  accountManager->payMoney(id,pin,val,id2);
 }
 

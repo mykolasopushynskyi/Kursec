@@ -1,6 +1,6 @@
 #include "gethandler.h"
 
-GetHandler::GetHandler()
+GetHandler::GetHandler(AccountManager* accountManager):THandler(accountManager)
 {
 }
 
@@ -76,7 +76,7 @@ QString GetHandler::handle(QByteArray t)
     if(!valr.exactMatch(val)){
         return "Помилка запису кількості грошей";
     }
-    if(val.toUInt() == 0 ){
+    if(val.toUInt() == 0 || val.toUInt() < 0){
         return "Неправильна кількість грошей";
     }
     if(val.toInt() % 5 != 0){
@@ -85,5 +85,5 @@ QString GetHandler::handle(QByteArray t)
 
     //TODO Додати звертання до БД з разунками
 
-    return "Зняття грошей пін " + pin + " id " + id + " val " + val;
+    return accountManager->getMoney(id,pin,val);
 }

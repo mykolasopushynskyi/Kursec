@@ -9,7 +9,7 @@
 class PutHandler : public THandler
 {
 public:
-    PutHandler();
+    PutHandler(AccountManager* accountManager);
     QString handle(QByteArray t);
 };
 

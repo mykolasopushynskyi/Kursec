@@ -3,12 +3,13 @@
 TransactionManager::TransactionManager(QObject *parent) :
     QObject(parent)
 {
-    //TODO Add building chain here.
-    root = new CheckHandler;
-    root->add(new GetHandler());
-    root->add(new PutHandler());
-    root->add(new PayHandler());
-    root->add(new ErrorHandler());
+    AccountManager* accountManager = new AccountManager();
+
+    root = new CheckHandler(accountManager);
+    root->add(new GetHandler(accountManager));
+    root->add(new PutHandler(accountManager));
+    root->add(new PayHandler(accountManager));
+    root->add(new ErrorHandler(accountManager));
 }
 
 QString TransactionManager::handleTransaction(QByteArray transaction)

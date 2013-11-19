@@ -7,7 +7,7 @@
 class CheckHandler : public THandler
 {
 public:
-    CheckHandler();
+    CheckHandler(AccountManager* accountManager);
     QString handle(QByteArray t);
 };
 
