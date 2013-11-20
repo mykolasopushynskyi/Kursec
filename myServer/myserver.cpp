@@ -3,6 +3,7 @@
 MyServer::MyServer(QString prt, QObject *parent) :
     QObject(parent)
 {
+    isStarted = false;
     tManager = new TransactionManager();
     server = new QTcpServer(this);
     connect(server, SIGNAL(newConnection()), this, SLOT(newConnection()));

@@ -20,7 +20,7 @@ public slots:
 private:
     TransactionManager* tManager;
     QTcpServer *server;
-    bool isStarted = false;
+    bool isStarted ;
     QHostAddress* addr;
 };
 
